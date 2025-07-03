@@ -69,10 +69,6 @@ python run.py
 执行命令后，稍等一会，出现如下界面，表示服务启动成功
 ![Termux运行](images/run.png)
 
-## API使用说明
-
-马上到来
-
 ## APP部署和使用
 
 直接下载APP点击安装即可，下载地址：[网盘下载，提取码：m2a2](https://pan.baidu.com/s/16Fpg4dAIbMiZk0SlndDrHA)
@@ -99,4 +95,25 @@ python run.py
 
 ## 开源端侧大模型跟踪和评测对比
 
-马上到来
+**1. 语言大模型**
+
+根据实际测试，在手机上能够流畅运行的语言大模型硬盘占用在4G以下最合适。
+
+为了评估端侧大模型效果，精选20道题端侧应用场景题为基准测试集，并提出一种主观打分机制，以Qwen3-4B-Q5_K_M.gguf为基准对比模型，基准得分为10分，然后进行二选一主观打分，若胜出+1。如果新对比模型得分超过基准模型，则新的模型成为基准模型，也就是本工程提供的下载地址模型（最佳推荐模型，最高分）。
+
+模型评测结果如下（按照得分排序，待整理好后，测试结果予以开源）：
+
+模型名称| 参数量 |量化尺度 | 发布时间 | 发布机构 | 得分  
+-|-|-|-|-|-
+Qwen3-4B-Q5_K_M.gguf | 4B | Q5 | 2025-04-29 | Qwen | 10
+
+
+**2. 语音识别大模型**
+
+根据实际测试，在手机上能够流畅运行的语音识别大模型硬盘占用在150M以下最合适。
+
+模型名称| 参数量 |量化尺度 | 发布时间 | 发布机构 | 误码率  
+-|-|-|-|-|-
+ggml-base.bin | 74M | 无量化 | 2022-09-21 | OpenAI | 待评测
+
+[![Star History Chart](https://api.star-history.com/svg?repos=chenking2020/my-awesome-device-llm-project&type=Date)](https://star-history.com/#chenking2020/my-awesome-device-llm-project&Date)

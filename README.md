@@ -2,6 +2,8 @@
 
 本项目旨在构造一个手机、平台等端侧设备本地运行多模态大模型能力的生态，包括运行环境、端侧大模型和前后端APP等，并追踪当前端侧大模型开源模型，尽微薄之力为端侧大模型应用提供一些开源实现参考。
 
+This project aims to build an ecosystem for running multimodal large models locally on devices such as mobile phones and tablets. It encompasses the runtime environment, edge-device large models, and front-end and back-end applications. Additionally, the project tracks the latest open-source models for edge-device large models, striving to contribute to the field by providing open-source implementation references for edge-device large model applications.
+
 ## 环境搭建（Android）
 
 **1. 安装termux**
@@ -97,34 +99,37 @@ python run.py
 
 **1. 语言大模型**
 
-根据实际测试，在手机上能够流畅运行的语言大模型硬盘占用在3G以下最合适。
+根据实际测试，在手机上能够流畅运行的语言大模型硬盘占用在1G左右最合适。
 
-为了评估端侧大模型效果，精选20道题端侧应用场景题为基准测试集，并提出一种主观打分机制，以Qwen3-4B-Q4_K_M.gguf为基准对比模型，基准得分为10分，然后进行二选一主观打分，若胜出+1。如果新对比模型得分超过基准模型，则新的模型成为基准模型，也就是本工程提供的下载地址模型（最佳推荐模型，最高分）。
+为了评估端侧大模型效果，精选10道题端侧应用场景题为基准测试集，并利用ELO主观打分机制，以gemma-3-270m-it为基准对比模型，基准得分为1000分，然后进行二选一主观打分，若胜出+1。如果新对比模型得分超过基准模型，则新的模型成为基准模型，也就是本工程提供的下载地址模型（最佳推荐模型，最高分）。
 
 **gemma-3-270m-it 2025-08-15**
    
-    谷歌最新推出的Gemma 3 270M模型是一款轻量级AI模型，特点是仅需0.5GB内存即可在本地设备（如手机）上运行，经过6万亿个token的训练，支持聊天、编程和数学任务，性能高效。结合Dynamic GGUF技术，模型推理速度可达每秒50个token，同时支持通过Unsloth进行微调并导出到手机等设备，极大地降低了AI部署的硬件门槛。
+谷歌最新推出的Gemma 3 270M模型是一款轻量级AI模型，特点是仅需0.5GB内存即可在本地设备（如手机）上运行，经过6万亿个token的训练，支持聊天、编程和数学任务，性能高效。结合Dynamic GGUF技术，模型推理速度可达每秒50个token，同时支持通过Unsloth进行微调并导出到手机等设备，极大地降低了AI部署的硬件门槛。
 
 **Qwen3-4B-2507 2025-08-06**
    
-    Qwen3-4B 2507相比4月底发布的融合模型，将推理和非推理模式进行了分离，推理和非推理能力相比前代模型都有较大提升。
+Qwen3-4B 2507相比4月底发布的融合模型，将推理和非推理模式进行了分离，推理和非推理能力相比前代模型都有较大提升。
 
-**Hunyuan-4B 2025-08-04**
+**Hunyuan-1.8B-Instruct 2025-08-04**
 
-    Hunyuan-4B是腾讯全链路自研的轻量级大语言模型，基于Transformer架构并采用多阶段训练策略构建。其核心技术包括分组查询注意力（GQA）和量化优化技术，支持快思考（Fast Thinking）与慢思考（Slow Thinking）双模式，前者通过轻量量化实现毫秒级响应，后者通过多步推理提升复杂任务精度。模型原生支持 256K 超长上下文窗口，结合旋转位置嵌入（RoPE）技术，可高效处理长文本分析与生成任务。
+Hunyuan-1.8B是腾讯全链路自研的轻量级大语言模型，基于Transformer架构并采用多阶段训练策略构建。其核心技术包括分组查询注意力（GQA）和量化优化技术，支持快思考（Fast Thinking）与慢思考（Slow Thinking）双模式，前者通过轻量量化实现毫秒级响应，后者通过多步推理提升复杂任务精度。模型原生支持 256K 超长上下文窗口，结合旋转位置嵌入（RoPE）技术，可高效处理长文本分析与生成任务。
 
-**Qwen3-4B 2025-04-29**
+**Qwen3-0.6B/1.7B 2025-04-29**
 
-    Qwen3-4B 是 Qwen3 系列中的一员，采用与 Qwen2.5 类似架构，运用分组查询注意力（GQA）、SwiGLU、旋转位置嵌入（RoPE）和 RMSNorm 等技术，并引入 QK-Norm 确保稳定训练。其核心创新在于将推理模式和非推理模式集成，推理模式用于复杂逻辑推理、数学和编码任务，非推理模式用于高效通用对话，能依任务需求动态分配计算资源，在不同场景发挥最佳性能。推理与非推理切换方式为在指令中加入 /think和 /no_think
+Qwen3采用与 Qwen2.5 类似架构，运用分组查询注意力（GQA）、SwiGLU、旋转位置嵌入（RoPE）和 RMSNorm 等技术，并引入 QK-Norm 确保稳定训练。其核心创新在于将推理模式和非推理模式集成，推理模式用于复杂逻辑推理、数学和编码任务，非推理模式用于高效通用对话，能依任务需求动态分配计算资源，在不同场景发挥最佳性能。推理与非推理切换方式为在指令中加入 /think和 /no_think
 
-模型评测结果如下（按照得分排序，待整理好后，测试结果予以开源）：
+**模型评测结果如下**
 
-模型名称| 参数量 |量化尺度 | 发布时间 | 发布机构 | 能力域 | 得分  
+（按照得分排序，待整理好后，测试结果予以开源）：
+
+模型名称| 参数量 |量化尺度 | 发布时间 | 发布机构 | 能力域 | ELO  
 -|-|-|-|-|-|-
-gemma-3-270m-it-GGUF | 270M | bf16 | 2025-08-15 | Google | 非推理 | 待测试
-Qwen3-4B-Instruct-2507-Q4_K_M.gguf | 4B | Q4 | 2025-08-06 | Qwen | 非推理 | 待测试
-Hunyuan-4B-Instruct-Q4_K_M.gguf | 4B | Q4 | 2025-08-04 | Tencent | 通用推理与非推理融合 | 待测试
-Qwen3-4B-Q4_K_M.gguf | 4B | Q4 | 2025-04-29 | Qwen | 通用推理与非推理融合 | 10
+gemma-3-270m-it | 270M | bf16 | 2025-08-15 | Google | 非推理 | 1000
+Qwen3-0.6B | 0.6B | bf16 | 2025-08-06 | Qwen | 混合 | 待测试
+Qwen3-1.7B | 1.7B | 4Bit | 2025-08-06 | Qwen | 混合 | 待测试
+Hunyuan-1.8B-Instruct | 1.8B | 4Bit | 2025-08-04 | Tencent | 混合 | 待测试
+
 
 
 **2. 语音识别大模型**

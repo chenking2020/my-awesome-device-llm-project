@@ -1,6 +1,6 @@
 {
     "name" : "chat-app",
-    "appid" : "__UNI__0D820C1",
+    "appid" : "XXXX",
     "description" : "一款可离线部署的聊天应用",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -121,7 +121,7 @@
     },
     "h5" : {
         "devServer" : {
-            "port" : 1111,
+            "port" : 8888,
             "disableHostCheck" : true,
             "proxy" : {
                 "/gpu" : {

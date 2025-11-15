@@ -121,11 +121,11 @@
     },
     "h5" : {
         "devServer" : {
-            "port" : 8080,
+            "port" : 1111,
             "disableHostCheck" : true,
             "proxy" : {
                 "/gpu" : {
-                    "target" : "http://222.222.172.114:81/",
+                    "target" : "http://IP:PORT/",
                     "changeOrigin" : true,
                     "secure" : false
                 }

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@microsoft/fetch-event-source": "^2.0.1",
+    "event-source-polyfill": "^1.0.31",
+    "image-tools": "^1.4.0"
+  }
+}

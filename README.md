@@ -4,6 +4,8 @@
 
 This project aims to build an ecosystem for running multimodal large models locally on devices such as mobile phones and tablets. It encompasses the runtime environment, edge-device large models, and front-end and back-end applications. Additionally, the project tracks the latest open-source models for edge-device large models, striving to contribute to the field by providing open-source implementation references for edge-device large model applications.
 
+
+
 ## 环境搭建（Android）
 
 **1. 安装termux**
@@ -141,5 +143,60 @@ gemma-3-270m-it | 270M | bf16 | 2025-08-15 | Google | 非推理 | 宽松 | 1096
 模型名称| 参数量 |量化尺度 | 发布时间 | 发布机构 | 误码率  
 -|-|-|-|-|-
 ggml-base.bin | 74M | 无量化 | 2022-09-21 | OpenAI | 待评测
+
+# chat-app
+
+## 项目介绍
+chat-app是一款基于uni-app开发的跨平台应用，支持离线部署的智能聊天助手。本项目提供了丰富的功能模块，包括聊天对话、语音识别、视频播放和内容展示等功能。
+
+## 技术栈
+- 前端框架：uni-app (Vue 2)
+- UI组件：uni-ui
+- 网络请求：Fetch API, EventSource
+- 多媒体处理：image-tools
+
+### 开发环境要求
+- HBuilder X（推荐，开箱即用）
+- 或 VS Code（需安装相关插件和依赖）
+- Node.js
+
+### 安装步骤
+
+1. 进入项目目录
+```bash
+cd news
+```
+
+2. 安装依赖
+```bash
+npm install
+```
+
+3. 使用HBuilder X打开项目
+   - 导入项目
+   - 选择运行到浏览器或模拟器
+
+### 编译发布
+- Android APK：通过HBuilder X云打包功能生成APK
+- H5版本：使用HBuilder X发行H5版本
+
+## 项目结构
+```
+├── api/                  # API接口目录
+├── common/               # 公共资源和工具
+│   ├── icon.css          # 图标样式
+│   ├── uni.css           # 统一样式
+│   └── util.js           # 工具函数
+├── pages/                # 页面目录
+│   ├── canvas/           # 画布页面
+│   ├── index/            # 主页
+├── static/               # 静态资源
+├── uni_modules/          # uni-app插件
+└── unpackage/            # 打包生成目录
+```
+
+## 注意事项
+- 推荐使用HBuilder X打开项目，VS Code需要安装更多插件和依赖
+- 离线部署需要配置相应的服务器环境
 
 [![Star History Chart](https://api.star-history.com/svg?repos=chenking2020/my-awesome-device-llm-project&type=Date)](https://star-history.com/#chenking2020/my-awesome-device-llm-project&Date)
